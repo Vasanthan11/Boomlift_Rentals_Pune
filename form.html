@@ -1,0 +1,443 @@
+<!-- form.html -->
+<section class="bl-enquiry-section">
+  <div class="bl-enquiry-shell">
+    <!-- Left image (hidden on mobile) -->
+    <div class="bl-enquiry-media">
+      <img
+        src="./images/sci05.webp"
+        alt="Boom lift and scissor lift rentals in Pune"
+        class="bl-enquiry-img"
+      />
+    </div>
+
+    <!-- Right card: text + form -->
+    <div class="bl-enquiry-card">
+      <p class="bl-enquiry-kicker">Fast Quotes • Pan-Pune Service</p>
+      <h2 class="bl-enquiry-title heading-font">Send Us Your Enquiry</h2>
+
+      <p class="bl-enquiry-text">
+        Reach out to us for boom lifts, scissor lifts, and man lift rentals in Pune.
+        Share your requirement and we’ll send you a customized quote tailored to your site.
+      </p>
+
+      <p class="bl-enquiry-badges">
+        FAST RESPONSE • BEST RENTAL RATES • PROFESSIONAL SUPPORT
+      </p>
+
+      <div class="bl-enquiry-info">
+        <p><span class="bl-enquiry-label">Call:</span> +91 99999 99999</p>
+        <p>
+          <span class="bl-enquiry-label">Email:</span>
+          info@boomliftrentalspune.com
+        </p>
+        <p>
+          <span class="bl-enquiry-label">Working Hours:</span>
+          Mon – Sat, 9:00 AM to 7:00 PM
+        </p>
+      </div>
+
+      <h3 class="bl-enquiry-form-title heading-font">
+        Enquiry Form for Boom Lifts / Scissor Lifts
+      </h3>
+
+      <form
+        class="bl-enquiry-form"
+        action="process-enquiry.php"
+        method="post"
+        novalidate
+      >
+        <div class="bl-form-row">
+          <label for="full_name">Full Name*</label>
+          <input
+            type="text"
+            id="full_name"
+            name="full_name"
+            required
+            placeholder="Enter your full name"
+          />
+        </div>
+
+        <div class="bl-form-row">
+          <label for="email">Email Address*</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="bl-form-row">
+          <label for="phone">Contact Number*</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            placeholder="+91 XXXXX XXXXX"
+          />
+        </div>
+
+        <div class="bl-form-row">
+          <label for="location">Area / Location*</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            required
+            placeholder="Site location in Pune"
+          />
+        </div>
+
+        <div class="bl-form-row">
+          <label for="equipment">Select Equipment*</label>
+          <div class="bl-select-wrapper">
+            <select id="equipment" name="equipment" required>
+              <option value="">-- Select Equipment --</option>
+              <option value="boom-lift">Boom Lift</option>
+              <option value="scissor-lift">Scissor Lift</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bl-form-row">
+          <label for="message">Requirement Details (Optional)</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            placeholder="Share height, duration, site conditions, or any special requirement."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="bl-enquiry-submit">
+          Request a Custom Quote
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Fonts */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap");
+
+  :root {
+    --bl-navy: #465c88;
+    --bl-orange: #ff7a30;
+    --bl-black: #000000;
+    --bl-cream: #e9e3df;
+
+    --bl-radius-lg: 18px;
+    --bl-radius-pill: 999px;
+    --bl-shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.22);
+    --bl-transition-fast: 0.2s ease;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  input,
+  textarea,
+  select,
+  button {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  .heading-font {
+    font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  .bl-enquiry-section {
+    background: var(--bl-cream);
+    padding: 2.5rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bl-enquiry-shell {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #f3ece7;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+    box-shadow: var(--bl-shadow-soft);
+  }
+
+  /* Left image */
+  .bl-enquiry-media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bl-enquiry-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.03);
+  }
+
+  /* Right card */
+  .bl-enquiry-card {
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 122, 48, 0.08),
+        transparent 55%
+      ),
+      #000000;
+    color: #ffffff;
+    padding: 2.2rem 2.1rem 2.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    position: relative;
+    opacity: 0;
+    transform: translateX(26px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .bl-enquiry-card.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .bl-enquiry-kicker {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bl-cream);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .bl-enquiry-title {
+    font-size: 1.6rem;
+    margin: 0.1rem 0 0.4rem;
+  }
+
+  .bl-enquiry-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #f2f2f2;
+    margin: 0;
+  }
+
+  .bl-enquiry-badges {
+    font-size: 0.78rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--bl-orange);
+    margin: 0.4rem 0 0.6rem;
+  }
+
+  .bl-enquiry-info {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .bl-enquiry-info p {
+    margin: 0.15rem 0;
+  }
+
+  .bl-enquiry-label {
+    font-weight: 600;
+    color: var(--bl-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.74rem;
+    margin-right: 0.3rem;
+  }
+
+  .bl-enquiry-form-title {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+  }
+
+  .bl-enquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .bl-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .bl-form-row:nth-last-child(2),
+  .bl-form-row:nth-last-child(1) {
+    grid-column: 1 / -1;
+  }
+
+  .bl-form-row label {
+    font-size: 0.78rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--bl-cream);
+  }
+
+  .bl-enquiry-form input,
+  .bl-enquiry-form select,
+  .bl-enquiry-form textarea {
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+    border: 1px solid rgba(233, 227, 223, 0.25);
+    background: rgba(10, 10, 10, 0.9);
+    color: #ffffff;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color var(--bl-transition-fast),
+      box-shadow var(--bl-transition-fast),
+      background var(--bl-transition-fast);
+  }
+
+  .bl-enquiry-form input::placeholder,
+  .bl-enquiry-form textarea::placeholder {
+    color: rgba(233, 227, 223, 0.6);
+  }
+
+  .bl-enquiry-form input:focus,
+  .bl-enquiry-form select:focus,
+  .bl-enquiry-form textarea:focus {
+    border-color: var(--bl-orange);
+    box-shadow: 0 0 0 1px rgba(255, 122, 48, 0.7);
+    background: #050505;
+  }
+
+  .bl-select-wrapper {
+    position: relative;
+  }
+
+  .bl-select-wrapper::after {
+    content: "▾";
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    pointer-events: none;
+    color: rgba(233, 227, 223, 0.7);
+  }
+
+  .bl-enquiry-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+  }
+
+  .bl-enquiry-form textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  .bl-enquiry-submit {
+    grid-column: 1 / -1;
+    margin-top: 0.4rem;
+    border: none;
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--bl-orange);
+    color: var(--bl-black);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+    transition: transform var(--bl-transition-fast),
+      box-shadow var(--bl-transition-fast),
+      background var(--bl-transition-fast),
+      color var(--bl-transition-fast);
+  }
+
+  .bl-enquiry-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 34px rgba(0, 0, 0, 0.55);
+    background: #000000;
+    color: var(--bl-orange);
+  }
+
+  .bl-enquiry-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .bl-enquiry-shell {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .bl-enquiry-media {
+      display: none; /* mobile: form alone, no side image */
+    }
+
+    .bl-enquiry-card {
+      padding: 1.8rem 1.4rem 2rem;
+    }
+
+    .bl-enquiry-form {
+      grid-template-columns: 1fr;
+    }
+
+    .bl-form-row:nth-last-child(2),
+    .bl-form-row:nth-last-child(1) {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bl-enquiry-section {
+      padding: 1.8rem 0.7rem;
+    }
+
+    .bl-enquiry-card {
+      border-radius: 18px;
+    }
+
+    .bl-enquiry-title {
+      font-size: 1.35rem;
+    }
+  }
+</style>
+
+<script>
+  // Simple reveal animation for form card
+  document.addEventListener("DOMContentLoaded", function () {
+    var card = document.querySelector(".bl-enquiry-card");
+    if (!card) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            card.classList.add("is-visible");
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(card);
+  });
+</script>

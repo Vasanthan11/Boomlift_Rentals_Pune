@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scissor Lift Rentals in Pune | BoomLift Rentals Pune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap");
+
+      :root {
+        --bl-navy: #465c88;
+        --bl-orange: #ff7a30;
+        --bl-black: #000000;
+        --bl-cream: #e9e3df;
+
+        --bl-radius-lg: 20px;
+        --bl-radius-pill: 999px;
+        --bl-transition-fast: 0.2s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding-top: 70px; /* for fixed navbar */
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 1rem; /* base size >= 1rem */
+        background: var(--bl-cream);
+        color: #111111;
+      }
+
+      .heading-font {
+        font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .bl-container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 1.2rem;
+      }
+
+      /* Shared sections + reveal */
+      .bl-section {
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .bl-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bl-section-header {
+        margin-bottom: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .bl-section-kicker {
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+      }
+
+      .bl-section-title {
+        font-size: 1.8rem;
+      }
+
+      .bl-section-subtitle {
+        font-size: 1.1rem;
+        max-width: 640px;
+        color: #343434;
+        line-height: 1.7;
+      }
+
+      .bl-quote-cta-wrap {
+        margin-top: 1.8rem;
+      }
+
+      /* Buttons – NO shadow */
+      .bl-quote-btn,
+      .bl-hero-secondary,
+      .bl-gallery-filter-btn {
+        border-radius: 14px;
+        padding: 0.9rem 1.6rem;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: background var(--bl-transition-fast),
+          color var(--bl-transition-fast),
+          border-color var(--bl-transition-fast),
+          transform var(--bl-transition-fast);
+      }
+
+      .bl-quote-btn {
+        background: var(--bl-orange);
+        color: var(--bl-black);
+      }
+
+      .bl-quote-btn:hover {
+        background: var(--bl-black);
+        color: var(--bl-orange);
+        transform: translateY(-1px);
+      }
+
+      .bl-hero-secondary,
+      .bl-gallery-filter-btn {
+        background: transparent;
+        color: var(--bl-black);
+        border-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .bl-hero-secondary:hover,
+      .bl-gallery-filter-btn:hover {
+        background: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      .bl-gallery-filter-btn.is-active {
+        background: var(--bl-black);
+        color: #ffffff;
+        border-color: var(--bl-black);
+      }
+
+      /* HERO */
+      .bl-hero {
+        background: radial-gradient(circle at top left, #f8efe7, var(--bl-cream));
+        padding-top: 3rem;
+        padding-bottom: 3.6rem;
+      }
+
+      .bl-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 2.8rem;
+        align-items: center;
+      }
+
+      .bl-hero-eyebrow {
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+        margin-bottom: 0.6rem;
+      }
+
+      .bl-hero-title {
+        font-size: 2.2rem; /* >1.3rem allowed */
+        line-height: 1.15;
+        margin: 0 0 0.9rem;
+        color: var(--bl-black);
+      }
+
+      .bl-hero-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 560px;
+        color: #333333;
+        margin-bottom: 1.5rem;
+      }
+
+      .bl-hero-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .bl-chip {
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px dashed rgba(0, 0, 0, 0.12);
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .bl-chip-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--bl-orange);
+      }
+
+      .bl-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.2rem;
+      }
+
+      .bl-hero-meta {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .bl-hero-meta strong {
+        color: var(--bl-black);
+      }
+
+      .bl-hero-media {
+        position: relative;
+      }
+
+      .bl-hero-photo-stack {
+        position: relative;
+        max-width: 420px;
+        margin-left: auto;
+      }
+
+      .bl-hero-photo-bg {
+        border-radius: 26px;
+        overflow: hidden;
+        transform: translateX(12px);
+      }
+
+      .bl-hero-photo-bg img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bl-hero-photo-tag {
+        position: absolute;
+        bottom: -28px;
+        left: -26px;
+        border-radius: 999px;
+        padding: 0.6rem 1.2rem;
+        background: #000000;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 1rem;
+      }
+
+      .bl-hero-photo-tag span:first-child {
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: var(--bl-orange);
+      }
+
+      /* SECTION 2 – WHERE SCISSOR LIFTS FIT */
+      .bl-uses {
+        background: #ffffff;
+      }
+
+      .bl-uses-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2.4rem;
+        align-items: flex-start;
+      }
+
+      .bl-uses-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .bl-use-card {
+        border-radius: 18px;
+        padding: 1.2rem 1.1rem;
+        background: var(--bl-cream);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .bl-use-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-use-text {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .bl-uses-side {
+        border-radius: 18px;
+        padding: 1.4rem 1.3rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.1),
+            transparent
+          ),
+          #faf8f6;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1rem;
+      }
+
+      .bl-uses-tag {
+        font-size: 1rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+        margin-bottom: 0.5rem;
+      }
+
+      .bl-uses-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.7rem 0 0.9rem;
+        font-size: 1rem;
+      }
+
+      .bl-uses-list li {
+        margin-bottom: 0.35rem;
+      }
+
+      .bl-uses-list li::before {
+        content: "• ";
+        color: var(--bl-orange);
+      }
+
+      /* SECTION 3 – IMAGE GALLERY */
+      .bl-gallery {
+        background: var(--bl-cream);
+      }
+
+      .bl-gallery-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .bl-gallery-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .bl-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .bl-gallery-item {
+        border-radius: 18px;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bl-gallery-img-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bl-gallery-img-wrap img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.25s ease;
+      }
+
+      .bl-gallery-item:hover img {
+        transform: scale(1.03);
+      }
+
+      .bl-gallery-caption {
+        padding: 0.8rem 0.9rem;
+        font-size: 1rem;
+      }
+
+      .bl-gallery-caption-title {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .bl-gallery-caption-text {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      /* SECTION 4 – SCISSOR TYPES & SPECS */
+      .bl-types {
+        background: #ffffff;
+      }
+
+      .bl-types-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        gap: 2.4rem;
+        align-items: flex-start;
+      }
+
+      .bl-types-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .bl-type-card {
+        border-radius: 18px;
+        padding: 1.2rem 1.1rem;
+        background: var(--bl-cream);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .bl-type-heading {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+
+      .bl-type-meta {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-type-text {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      .bl-spec-panel {
+        border-radius: 18px;
+        padding: 1.4rem 1.3rem;
+        background: #111111;
+        color: #f5f5f5;
+      }
+
+      .bl-spec-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .bl-spec-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem 1.2rem;
+        font-size: 1rem;
+      }
+
+      .bl-spec-label {
+        color: #b8b8b8;
+      }
+
+      .bl-spec-value {
+        font-weight: 600;
+      }
+
+      /* SECTION 5 – PLANNING / SAFETY WITH IMAGE */
+      .bl-plan {
+        background: #111111;
+        color: #f5f5f5;
+      }
+
+      .bl-plan .bl-section-kicker {
+        color: var(--bl-cream);
+      }
+
+      .bl-plan .bl-section-subtitle {
+        color: #e0e0e0;
+      }
+
+      .bl-plan-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 2.4rem;
+        align-items: center;
+      }
+
+      .bl-plan-steps {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .bl-plan-card {
+        border-radius: 18px;
+        padding: 1.1rem 1rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .bl-plan-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--bl-orange);
+        margin-bottom: 0.35rem;
+      }
+
+      .bl-plan-text {
+        font-size: 1rem;
+        color: #f1f1f1;
+        line-height: 1.6;
+      }
+
+      .bl-plan-side {
+        border-radius: 20px;
+        padding: 1.4rem 1.3rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.5),
+            transparent
+          ),
+          #000000;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 1rem;
+      }
+
+      .bl-plan-img {
+        width: 100%;
+        border-radius: 16px;
+        margin-bottom: 0.9rem;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bl-plan-side-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-plan-side-text {
+        font-size: 1rem;
+        color: #f1f1f1;
+        margin-bottom: 0.8rem;
+        line-height: 1.6;
+      }
+
+      .bl-plan-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 1rem;
+      }
+
+      .bl-plan-badge {
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      /* INLINE FORM */
+      .bl-inline-form {
+        background: var(--bl-cream);
+      }
+
+      /* MODAL */
+      .bl-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 1rem;
+      }
+
+      .bl-modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .bl-modal-dialog {
+        position: relative;
+        max-width: 1040px;
+        width: 100%;
+        max-height: 95vh;
+        overflow-y: auto;
+        border-radius: 24px;
+      }
+
+      .bl-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        border: 1px solid rgba(233, 227, 223, 0.5);
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        font-size: 1.6rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+
+      .bl-modal-close:hover {
+        background: #000000;
+      }
+
+      #modal-form-container section {
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        body {
+          padding-top: 64px;
+        }
+
+        .bl-hero-inner {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-hero-media {
+          order: -1;
+        }
+
+        .bl-hero-photo-stack {
+          margin: 0 auto;
+        }
+
+        .bl-uses-layout,
+        .bl-types-layout,
+        .bl-plan-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-uses-grid,
+        .bl-gallery-grid,
+        .bl-types-grid,
+        .bl-plan-steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .bl-gallery-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .bl-section {
+          padding: 3.2rem 0;
+        }
+
+        .bl-section-title {
+          font-size: 1.6rem;
+        }
+
+        .bl-uses-grid,
+        .bl-gallery-grid,
+        .bl-types-grid,
+        .bl-plan-steps {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-gallery-img-wrap img {
+          height: 190px;
+        }
+
+        .bl-hero-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR FRAGMENT -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+      <!-- SECTION 1: HERO -->
+      <section
+        class="bl-hero bl-section"
+        data-context="Scissor Lift Rentals – General Enquiry"
+      >
+        <div class="bl-container">
+          <div class="bl-hero-inner">
+            <div>
+              <p class="bl-hero-eyebrow">Scissor lift rentals in Pune</p>
+              <h1 class="bl-hero-title heading-font">
+                Stable platforms for indoor and outdoor work at height.
+              </h1>
+              <p class="bl-hero-text">
+                Rent electric and diesel scissor lifts for installation, finishing and
+                maintenance work. From compact machines for narrow aisles to large
+                rough-terrain scissors, we cover projects across Pune.
+              </p>
+
+              <div class="bl-hero-chips">
+                <span class="bl-chip">
+                  <span class="bl-chip-dot"></span>
+                  <span>Stable vertical access for 2–4 people</span>
+                </span>
+                <span class="bl-chip">
+                  <span class="bl-chip-dot"></span>
+                  <span>Platform extensions for extra reach</span>
+                </span>
+                <span class="bl-chip">
+                  <span class="bl-chip-dot"></span>
+                  <span>Electric &amp; diesel options</span>
+                </span>
+                <span class="bl-chip">
+                  <span class="bl-chip-dot"></span>
+                  <span>Daily, weekly &amp; monthly rentals</span>
+                </span>
+              </div>
+
+              <div class="bl-hero-actions">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Scissor Lift Rentals – Hero Get Quote"
+                >
+                  Get Scissor Lift Quote
+                </button>
+                <button
+                  class="bl-hero-secondary"
+                  type="button"
+                  onclick="document.getElementById('gallery-section').scrollIntoView({behavior:'smooth'})"
+                >
+                  View Site Photos
+                </button>
+              </div>
+
+              <p class="bl-hero-meta">
+                <strong>Ideal for warehouses, malls, plants and commercial interiors</strong>
+                in and around Pune.
+              </p>
+            </div>
+
+            <div class="bl-hero-media">
+              <div class="bl-hero-photo-stack">
+                <div class="bl-hero-photo-bg">
+                  <img
+                    src="./images/sci07.webp"
+                    alt="Scissor lift working inside warehouse"
+                  />
+                </div>
+                <div class="bl-hero-photo-tag">
+                  <span></span>
+                  <span>Clean, ready-to-use scissor lifts for your next job.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: WHERE SCISSOR LIFTS FIT -->
+      <section
+        class="bl-uses bl-section"
+        data-context="Scissor Lift Rentals – Applications"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Where scissor lifts work best</p>
+            <h2 class="bl-section-title heading-font">
+              Perfect for straight-up work with room for people and tools.
+            </h2>
+            <p class="bl-section-subtitle">
+              Choose scissor lifts when you need a solid platform, repeat movements
+              and a clean work area without scaffolding.
+            </p>
+          </div>
+
+          <div class="bl-uses-layout">
+            <div class="bl-uses-grid">
+              <article class="bl-use-card">
+                <div class="bl-use-title">MEP &amp; HVAC installation</div>
+                <div class="bl-use-text">
+                  Run ducts, pipes, trays and cabling in warehouses, plants and large
+                  commercial buildings.
+                </div>
+              </article>
+              <article class="bl-use-card">
+                <div class="bl-use-title">Finishing &amp; ceiling work</div>
+                <div class="bl-use-text">
+                  False ceilings, painting, acoustic panels and lighting layouts with
+                  repeat moves along bays.
+                </div>
+              </article>
+              <article class="bl-use-card">
+                <div class="bl-use-title">Racking &amp; storage systems</div>
+                <div class="bl-use-text">
+                  High-bay racking, fire sprinklers and signage in logistics parks and
+                  cold stores.
+                </div>
+              </article>
+              <article class="bl-use-card">
+                <div class="bl-use-title">Facility maintenance</div>
+                <div class="bl-use-text">
+                  Routine cleaning, repair and inspection work in malls, IT parks and
+                  industrial campuses.
+                </div>
+              </article>
+              <article class="bl-use-card">
+                <div class="bl-use-title">Outdoor finishing</div>
+                <div class="bl-use-text">
+                  Diesel rough-terrain scissors for façade touch-ups and external MEP
+                  on unfinished ground.
+                </div>
+              </article>
+              <article class="bl-use-card">
+                <div class="bl-use-title">Events &amp; temporary setups</div>
+                <div class="bl-use-text">
+                  Safe elevated access for truss work, decor and temporary structures
+                  for events.
+                </div>
+              </article>
+            </div>
+
+            <aside class="bl-uses-side">
+              <div class="bl-uses-tag">Not sure if you need a scissor?</div>
+              <p class="bl-section-subtitle" style="max-width:none;">
+                Share where you want to work, the clear height and floor conditions.
+                We’ll tell you whether a scissor lift is suitable or if another machine
+                fits better.
+              </p>
+              <ul class="bl-uses-list">
+                <li>Indoor / outdoor and floor finish (concrete, paver, tiles)</li>
+                <li>Clear height, obstructions and aisle width</li>
+                <li>Number of technicians and tools on the platform</li>
+              </ul>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Scissor Lift Rentals – Is scissor right for my job"
+                >
+                  Check My Job
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: IMAGE GALLERY -->
+      <section
+        id="gallery-section"
+        class="bl-gallery bl-section"
+        data-context="Scissor Lift Rentals – Gallery"
+      >
+        <div class="bl-container">
+          <div class="bl-gallery-header">
+            <div>
+              <p class="bl-section-kicker">Site images</p>
+              <h2 class="bl-section-title heading-font">
+                Scissor lifts at work across Pune.
+              </h2>
+            </div>
+            <div class="bl-gallery-filters">
+              <button
+                type="button"
+                class="bl-gallery-filter-btn is-active"
+                data-filter="all"
+              >
+                All
+              </button>
+              <button
+                type="button"
+                class="bl-gallery-filter-btn"
+                data-filter="indoor"
+              >
+                Indoor
+              </button>
+              <button
+                type="button"
+                class="bl-gallery-filter-btn"
+                data-filter="outdoor"
+              >
+                Outdoor
+              </button>
+            </div>
+          </div>
+
+          <div class="bl-gallery-grid">
+            <article class="bl-gallery-item" data-type="indoor">
+              <div class="bl-gallery-img-wrap">
+                <img
+                  src="./images/scnew2.jpg"
+                  alt="Scissor lift working under warehouse roof"
+                />
+              </div>
+              <div class="bl-gallery-caption">
+                <div class="bl-gallery-caption-title">
+                  Warehouse MEP installation
+                </div>
+                <div class="bl-gallery-caption-text">
+                  Electric scissor lift used for ducting and cable tray works.
+                </div>
+              </div>
+            </article>
+
+            <article class="bl-gallery-item" data-type="indoor">
+              <div class="bl-gallery-img-wrap">
+                <img
+                  src="./images/scnew1.jpg"
+                  alt="Compact scissor lift in shopping mall"
+                />
+              </div>
+              <div class="bl-gallery-caption">
+                <div class="bl-gallery-caption-title">
+                  Mall &amp; atrium maintenance
+                </div>
+                <div class="bl-gallery-caption-text">
+                  Compact model working inside finished public areas.
+                </div>
+              </div>
+            </article>
+
+            <article class="bl-gallery-item" data-type="outdoor">
+              <div class="bl-gallery-img-wrap">
+                <img
+                  src="./images/sci08.webp"
+                  alt="Rough-terrain scissor lift outdoors"
+                />
+              </div>
+              <div class="bl-gallery-caption">
+                <div class="bl-gallery-caption-title">
+                  Façade finishing
+                </div>
+                <div class="bl-gallery-caption-text">
+                  Diesel rough-terrain scissor operating on unfinished ground.
+                </div>
+              </div>
+            </article>
+
+            <article class="bl-gallery-item" data-type="outdoor">
+              <div class="bl-gallery-img-wrap">
+                <img
+                  src="./images/scnew7.jpg"
+                  alt="Scissor lifts ready in rental yard"
+                />
+              </div>
+              <div class="bl-gallery-caption">
+                <div class="bl-gallery-caption-title">
+                  Ready-to-dispatch fleet
+                </div>
+                <div class="bl-gallery-caption-text">
+                  A mix of height ranges for projects across the city.
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: TYPES & SPECS -->
+      <section
+        class="bl-types bl-section"
+        data-context="Scissor Lift Rentals – Types & Specs"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Scissor lift options</p>
+            <h2 class="bl-section-title heading-font">
+              From compact electrics to rough-terrain giants.
+            </h2>
+            <p class="bl-section-subtitle">
+              Choose machines by working height, platform size, power source and
+              whether the job is indoors or outdoors.
+            </p>
+          </div>
+
+          <div class="bl-types-layout">
+            <div class="bl-types-grid">
+              <article class="bl-type-card">
+                <div class="bl-type-heading">Compact electric scissors</div>
+                <div class="bl-type-meta">For finished floors &amp; tight aisles</div>
+                <div class="bl-type-text">
+                  Ideal for malls, data centres and warehouses with limited space.
+                  Non-marking tyres minimise floor impact.
+                </div>
+              </article>
+
+              <article class="bl-type-card">
+                <div class="bl-type-heading">Wide electric scissors</div>
+                <div class="bl-type-meta">More platform space indoors</div>
+                <div class="bl-type-text">
+                  Wider platforms and higher capacity where you need extra people and
+                  material on board.
+                </div>
+              </article>
+
+              <article class="bl-type-card">
+                <div class="bl-type-heading">Diesel rough-terrain scissors</div>
+                <div class="bl-type-meta">For outdoor construction sites</div>
+                <div class="bl-type-text">
+                  Four-wheel drive, outriggers and aggressive tyres for uneven and
+                  unfinished surfaces.
+                </div>
+              </article>
+
+              <article class="bl-type-card">
+                <div class="bl-type-heading">High-reach scissors</div>
+                <div class="bl-type-meta">Work at greater clear heights</div>
+                <div class="bl-type-text">
+                  For tall warehouses and industrial buildings where standard scissors
+                  can’t reach.
+                </div>
+              </article>
+            </div>
+
+            <aside class="bl-spec-panel">
+              <h3 class="bl-spec-title heading-font">
+                Typical scissor lift working ranges.
+              </h3>
+              <p style="font-size:1rem; margin-bottom:0.8rem;">
+                Actual models depend on availability. Use these figures as a starting
+                point and we’ll match a specific machine to your job.
+              </p>
+              <div class="bl-spec-grid">
+                <div>
+                  <div class="bl-spec-label">Working heights</div>
+                  <div class="bl-spec-value">6 m – 18 m</div>
+                </div>
+                <div>
+                  <div class="bl-spec-label">Platform width</div>
+                  <div class="bl-spec-value">0.8 m – 2.3 m</div>
+                </div>
+                <div>
+                  <div class="bl-spec-label">Platform capacity</div>
+                  <div class="bl-spec-value">230 – 700 kg*</div>
+                </div>
+                <div>
+                  <div class="bl-spec-label">Power options</div>
+                  <div class="bl-spec-value">Electric / Diesel</div>
+                </div>
+              </div>
+              <p style="font-size:1rem; margin-top:0.7rem; color:#d6d6d6;">
+                *Capacity varies with model and platform extension – we’ll confirm based
+                on your crew size and material.
+              </p>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Scissor Lift Rentals – Need model recommendation"
+                >
+                  Get Model Recommendation
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: PLANNING & SAFETY + IMAGE -->
+      <section
+        class="bl-plan bl-section"
+        data-context="Scissor Lift Rentals – Planning & Safety"
+      >
+        <div class="bl-container">
+          <div class="bl-plan-layout">
+            <div>
+              <div class="bl-section-header">
+                <p class="bl-section-kicker">Planning your rental</p>
+                <h2 class="bl-section-title heading-font">
+                  Safe, practical scissor lift plans for your project.
+                </h2>
+                <p class="bl-section-subtitle">
+                  We consider floor loading, aisle widths, working height and
+                  obstructions before recommending a scissor lift so your team can work
+                  confidently at height.
+                </p>
+              </div>
+
+              <div class="bl-plan-steps">
+                <article class="bl-plan-card">
+                  <div class="bl-plan-title">Floor &amp; site review</div>
+                  <div class="bl-plan-text">
+                    We check floor finish, gradients, ramps and loading limits to avoid
+                    damage or unsafe situations.
+                  </div>
+                </article>
+                <article class="bl-plan-card">
+                  <div class="bl-plan-title">Height &amp; reach checks</div>
+                  <div class="bl-plan-text">
+                    Clear height, ceiling services, and obstacle layout help us choose
+                    the right working height and platform size.
+                  </div>
+                </article>
+                <article class="bl-plan-card">
+                  <div class="bl-plan-title">Logistics planning</div>
+                  <div class="bl-plan-text">
+                    Entry points, lifts, dock levels and access timings are aligned to
+                    your site rules.
+                  </div>
+                </article>
+                <article class="bl-plan-card">
+                  <div class="bl-plan-title">Support &amp; extensions</div>
+                  <div class="bl-plan-text">
+                    We remain available during the rental for extensions, relocation
+                    and basic troubleshooting guidance.
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <aside class="bl-plan-side">
+              <img
+                src="./images/scnew6.jpg"
+                alt="Team planning scissor lift work"
+                class="bl-plan-img"
+              />
+              <h3 class="bl-plan-side-title heading-font">
+                Planning scissor lift work in Pune?
+              </h3>
+              <p class="bl-plan-side-text">
+                Share your site layout, working height and timeline. We’ll prepare a
+                simple plan and quote so you know exactly how scissor lifts fit into
+                your project.
+              </p>
+              <div class="bl-plan-badges">
+                <span class="bl-plan-badge">Site-specific guidance</span>
+                <span class="bl-plan-badge">Practical access suggestions</span>
+                <span class="bl-plan-badge">Clear commercial terms</span>
+              </div>
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Scissor Lift Rentals – Planning enquiry"
+                >
+                  Plan My Scissor Lift
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- INLINE FORM (BOTTOM, SAME AS INDEX) -->
+      <section class="bl-inline-form" id="enquiry-section">
+        <div id="inline-form-container"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MODAL FORM -->
+    <div class="bl-modal-backdrop" id="quote-modal" aria-hidden="true">
+      <div class="bl-modal-dialog">
+        <button class="bl-modal-close" type="button" id="modal-close-btn">
+          &times;
+        </button>
+        <div id="modal-form-container"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* NAVBAR */
+        fetch("navbar.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("nav-placeholder").innerHTML = html;
+
+            const nav = document.querySelector(".bl-navbar");
+            if (!nav) return;
+
+            const toggle = nav.querySelector(".bl-nav-toggle");
+            if (toggle) {
+              toggle.addEventListener("click", function () {
+                nav.classList.toggle("is-open");
+              });
+            }
+
+            const links = nav.querySelectorAll(".bl-nav-link, .bl-whatsapp-btn");
+            links.forEach(function (link) {
+              link.addEventListener("click", function () {
+                nav.classList.remove("is-open");
+              });
+            });
+
+            /* highlight this page */
+            // const current = nav.querySelector(
+            //   ".bl-nav-link[href*='scissor-lift']"
+            // );
+            // if (current) current.classList.add("active");
+          })
+          .catch((err) => console.error("Error loading navbar:", err));
+
+        /* FOOTER */
+        fetch("footer.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("footer-placeholder").innerHTML = html;
+          })
+          .catch((err) => console.error("Error loading footer:", err));
+
+        /* FORM (modal + inline) */
+        const formLoadingPromise = fetch("form.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("modal-form-container").innerHTML = html;
+            document.getElementById("inline-form-container").innerHTML = html;
+
+            const modalCard = document.querySelector(
+              "#modal-form-container .bl-enquiry-card"
+            );
+            if (modalCard) modalCard.classList.add("is-visible");
+
+            const inlineCard = document.querySelector(
+              "#inline-form-container .bl-enquiry-card"
+            );
+            if (inlineCard) inlineCard.classList.add("is-visible");
+
+            const modalForm = document.querySelector(
+              "#modal-form-container form"
+            );
+            if (modalForm) {
+              const hidden = document.createElement("input");
+              hidden.type = "hidden";
+              hidden.name = "enquiry_source";
+              hidden.id = "enquiry_source";
+              modalForm.appendChild(hidden);
+            }
+          })
+          .catch((err) => console.error("Error loading form:", err));
+
+        /* Scroll reveal */
+        const sections = document.querySelectorAll(".bl-section");
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.25 }
+          );
+          sections.forEach((s) => observer.observe(s));
+        } else {
+          sections.forEach((s) => s.classList.add("is-visible"));
+        }
+
+        /* Gallery filter (simple hide/show) */
+        const filterButtons = document.querySelectorAll(
+          ".bl-gallery-filter-btn"
+        );
+        const galleryItems = document.querySelectorAll(".bl-gallery-item");
+
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const type = btn.getAttribute("data-filter");
+            filterButtons.forEach((b) => b.classList.remove("is-active"));
+            btn.classList.add("is-active");
+
+            galleryItems.forEach((item) => {
+              const itemType = item.getAttribute("data-type");
+              if (type === "all" || type === itemType) {
+                item.style.display = "flex";
+              } else {
+                item.style.display = "none";
+              }
+            });
+          });
+        });
+
+        /* Modal behaviour */
+        const modal = document.getElementById("quote-modal");
+        const modalClose = document.getElementById("modal-close-btn");
+
+        function openModal(contextText) {
+          formLoadingPromise.then(function () {
+            const hiddenField = document.getElementById("enquiry_source");
+            if (hiddenField) hiddenField.value = contextText || "";
+
+            const titleEl = document.querySelector(
+              "#modal-form-container .bl-enquiry-form-title"
+            );
+            if (titleEl) {
+              titleEl.textContent =
+                "Enquiry Form – " + (contextText || "Scissor Lift Rentals");
+            }
+
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+          });
+        }
+
+        function closeModal() {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+        }
+
+        modalClose.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
+
+        /* Bind Get Quote buttons */
+        function bindQuoteButtons() {
+          const buttons = document.querySelectorAll(".bl-quote-btn");
+          buttons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              const ctx =
+                btn.getAttribute("data-context") ||
+                btn.closest(".bl-section")?.getAttribute("data-context") ||
+                "Scissor Lift Rentals";
+              openModal(ctx);
+            });
+          });
+        }
+
+        bindQuoteButtons();
+      });
+    </script>
+  </body>
+</html>

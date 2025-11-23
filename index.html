@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoomLift Rentals Pune – Your Partner in Working at Heights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap");
+
+      :root {
+        --bl-navy: #465c88;
+        --bl-orange: #ff7a30;
+        --bl-black: #000000;
+        --bl-cream: #e9e3df;
+
+        --bl-radius-lg: 20px;
+        --bl-radius-pill: 999px;
+        --bl-shadow-soft: 0 24px 48px rgba(0, 0, 0, 0.25);
+        --bl-transition-fast: 0.2s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding-top: 70px; /* space for fixed navbar */
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--bl-cream);
+        color: #111111;
+      }
+
+      .heading-font {
+        font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .bl-container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 1.1rem;
+      }
+
+      /* Shared section + reveal */
+      .bl-section {
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .bl-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bl-section-header {
+        margin-bottom: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .bl-section-kicker {
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+      }
+
+      .bl-section-title {
+        font-size: 1.4rem;
+      }
+
+      .bl-section-subtitle {
+        font-size: 1.4rem;
+        max-width: 580px;
+        color: #343434;
+      }
+
+      .bl-quote-cta-wrap {
+        margin-top: 1.8rem;
+      }
+
+      .bl-quote-btn {
+        border: none;
+        border-radius: 14px;
+        padding: 0.75rem 1.1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        background: var(--bl-orange);
+        color: var(--bl-black);
+        /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45); */
+        transition: transform var(--bl-transition-fast),
+          box-shadow var(--bl-transition-fast), background var(--bl-transition-fast),
+          color var(--bl-transition-fast);
+      }
+
+      .bl-quote-btn:hover {
+        transform: translateY(-1px);
+        /* box-shadow: 0 20px 34px rgba(0, 0, 0, 0.55); */
+        background: var(--bl-black);
+        color: var(--bl-orange);
+      }
+
+      .bl-quote-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+      }
+
+      /* HERO */
+      .bl-hero {
+        background: radial-gradient(circle at top left, #f8efe7, var(--bl-cream));
+        padding-top: 3.6rem;
+        padding-bottom: 4rem;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .bl-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2.8rem;
+        align-items: center;
+      }
+
+      .bl-hero-eyebrow {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+        margin-bottom: 0.5rem;
+      }
+
+      .bl-hero-title {
+        font-size: 2.4rem;
+        line-height: 1.1;
+        margin: 0 0 1.1rem;
+        color: var(--bl-black);
+      }
+
+      .bl-hero-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .bl-hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 1.1rem;
+        border-radius: var(--bl-radius-pill);
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1.1rem;
+      }
+
+      .bl-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--bl-orange);
+      }
+
+      .bl-hero-text {
+        font-size: 1.4rem;
+        line-height: 1.7;
+        max-width: 520px;
+        color: #333333;
+        margin-bottom: 1.1rem;
+      }
+
+      /* hero chips */
+      .bl-hero-points {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .bl-hero-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.45rem 1.1rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px dashed rgba(0, 0, 0, 0.12);
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+
+      .bl-hero-chip .bl-dot {
+        flex-shrink: 0;
+      }
+
+      .bl-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+        align-items: center;
+      }
+
+      .bl-hero-secondary {
+        border-radius: 12px;
+        border: 1px dashed rgba(0, 0, 0, 0.35);
+        padding: 0.65rem 1.1rem;
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-weight: 600;
+      }
+
+      .bl-hero-secondary:hover {
+        background: #ffffff;
+      }
+
+      .bl-hero-meta {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        color: #555555;
+      }
+
+      .bl-hero-meta strong {
+        color: var(--bl-black);
+      }
+
+      .bl-hero-media {
+        position: relative;
+      }
+
+      .bl-hero-photo-stack {
+        position: relative;
+        width: 100%;
+        max-width: 440px;
+        margin-left: auto;
+      }
+
+      .bl-hero-photo-bg {
+        position: relative;
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+        transform: translateX(12px);
+      }
+
+      .bl-hero-photo-bg img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bl-hero-photo-foreground {
+        position: absolute;
+        bottom: -40px;
+        left: -26px;
+        width: 70%;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        border: 4px solid #ffffff;
+        background: #000;
+      }
+
+      .bl-hero-photo-foreground img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* SERVICES – centered */
+      .bl-services {
+        background: #ffffff;
+        text-align: center;
+      }
+
+      .bl-services .bl-section-header {
+        align-items: center;
+      }
+
+      .bl-services .bl-section-subtitle {
+        max-width: 640px;
+      }
+
+      .bl-services-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        justify-content: center;
+      }
+
+      .bl-service-chip {
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        background: var(--bl-cream);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 1.1rem;
+        display: inline-flex;
+        flex-direction: column;
+        min-width: 210px;
+        max-width: 260px;
+        /* text-align: left; */
+      }
+
+      .bl-service-chip span:first-child {
+        font-weight: 600;
+      }
+
+      .bl-service-chip span:last-child {
+        font-size: 0.78rem;
+        color: #555;
+      }
+
+      /* EXPERTISE */
+      .bl-expertise {
+        background: linear-gradient(135deg, var(--bl-navy), #000000);
+        color: #ffffff;
+      }
+
+      .bl-expertise .bl-section-kicker {
+        color: var(--bl-cream);
+      }
+
+      .bl-expertise .bl-section-subtitle {
+        color: #f3f3f3;
+      }
+
+      .bl-expertise-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 2.5rem;
+        align-items: flex-start;
+      }
+
+      .bl-expertise-note {
+        font-size: 1.1rem;
+        max-width: 320px;
+        color: #ddd;
+      }
+
+      .bl-expertise-steps {
+        border-left: 2px solid rgba(233, 227, 223, 0.4);
+        padding-left: 1.1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+      }
+
+      .bl-expertise-card {
+        position: relative;
+      }
+
+      .bl-expertise-marker {
+        position: absolute;
+        left: -1.6rem;
+        top: 0rem;
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: var(--bl-orange);
+        box-shadow: 0 0 0 6px rgba(255, 122, 48, 0.25);
+      }
+
+      .bl-expertise-label {
+        font-size: 0.76rem;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: var(--bl-orange);
+        margin-bottom: 0.2rem;
+      }
+
+      .bl-expertise-title {
+        font-size: 1rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .bl-expertise-text {
+        font-size: 1.1rem;
+        color: #f1f1f1;
+      }
+
+      /* INDUSTRIES */
+      .bl-industries {
+        background: var(--bl-cream);
+      }
+
+      .bl-industries-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2.2rem;
+        align-items: stretch;
+      }
+
+      .bl-industries-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .bl-industry-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1.1rem;
+      }
+
+      .bl-industry-name {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .bl-industry-desc {
+        font-size: 1.1rem;
+        color: #444444;
+      }
+
+      .bl-industries-side {
+        border-radius: 18px;
+        padding: 1.1rem 1.1rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(255, 122, 48, 0.1),
+            transparent
+          ),
+          #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1.1rem;
+      }
+
+      .bl-industries-side-tag {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-industries-side-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-industries-side-text {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 0.7rem;
+      }
+
+      .bl-industries-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 0.78rem;
+      }
+
+      .bl-industries-pill {
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: var(--bl-cream);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* COMMITMENTS */
+      .bl-commitments {
+        background: #111111;
+        color: #f5f5f5;
+      }
+
+      .bl-commitments .bl-section-kicker {
+        color: var(--bl-cream);
+      }
+
+      .bl-commitments .bl-section-subtitle {
+        color: #e0e0e0;
+      }
+
+      .bl-commitments-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2.4rem;
+        align-items: flex-start;
+      }
+
+      .bl-commitments-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1rem;
+      }
+
+      .bl-commit-card {
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 18px;
+        padding: 1.1rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 1.1rem;
+      }
+
+      .bl-commit-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        color: var(--bl-orange);
+      }
+
+      .bl-commit-text {
+        font-size: 1.1rem;
+        color: #f2f2f2;
+      }
+
+      .bl-commit-side {
+        border-radius: 18px;
+        padding: 1.1rem 1.1rem 1.1rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.4),
+            transparent
+          ),
+          #000000;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1.1rem;
+      }
+
+      .bl-commit-img {
+        width: 100%;
+        border-radius: 14px;
+        margin-bottom: 1.1rem;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bl-commit-side-title {
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .bl-commit-side-text {
+        font-size: 1.1rem;
+        color: #f1f1f1;
+        margin-bottom: 0.6rem;
+      }
+
+      /* FLEET */
+      .bl-fleet {
+        background: #ffffff;
+      }
+
+      .bl-fleet-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .bl-fleet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .bl-fleet-item {
+        background: var(--bl-cream);
+        border-radius: 16px;
+        padding: 1.1rem 1.1rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .bl-fleet-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .bl-fleet-text {
+        font-size: 1.1rem;
+        color: #444444;
+      }
+
+      .bl-fleet-side {
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.1),
+            transparent
+          ),
+          #000000;
+        color: #ffffff;
+        border-radius: 20px;
+        padding: 1.1rem 1.1rem 1.4rem;
+      }
+
+      .bl-fleet-img {
+        width: 100%;
+        border-radius: 16px;
+        margin-bottom: 1.1rem;
+        max-height: 250px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .bl-fleet-side-title {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-fleet-side-text {
+        font-size: 1.1rem;
+        color: #f1f1f1;
+        margin-bottom: 0.7rem;
+      }
+
+      .bl-fleet-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 0.78rem;
+      }
+
+      .bl-fleet-badge {
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      /* FINAL CTA – centered */
+      .bl-final-cta {
+        background: linear-gradient(135deg, var(--bl-black), var(--bl-navy));
+        color: #ffffff;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .bl-final-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .bl-final-eyebrow {
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-cream);
+      }
+
+      .bl-final-title {
+        font-size: 1.4rem;
+        margin: 0;
+      }
+
+      .bl-final-text {
+        font-size: 1.1rem;
+        max-width: 560px;
+      }
+
+      .bl-final-meta {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* INLINE FORM SECTION */
+      .bl-inline-form {
+        background: var(--bl-cream);
+      }
+
+      /* MODAL */
+      .bl-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 1rem;
+      }
+
+      .bl-modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .bl-modal-dialog {
+        position: relative;
+        max-width: 1040px;
+        width: 100%;
+        max-height: 95vh;
+        overflow-y: auto;
+        border-radius: 24px;
+      }
+
+      .bl-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        border: 1px solid rgba(233, 227, 223, 0.5);
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+
+      .bl-modal-close:hover {
+        background: #000000;
+      }
+
+      #modal-form-container section {
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        body {
+          padding-top: 64px;
+        }
+
+        .bl-hero-inner {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-hero-media {
+          order: -1;
+        }
+
+        .bl-expertise-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-industries-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-industries-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .bl-commitments-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-commitments-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-fleet-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-fleet-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .bl-section {
+          padding: 3.2rem 0;
+        }
+
+        .bl-section-title {
+          font-size: 1.1rem;
+        }
+
+        .bl-industries-grid,
+        .bl-fleet-list {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-hero-title {
+          font-size: 2rem;
+        }
+
+        .bl-hero-points {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR FRAGMENT -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+      <!-- HERO -->
+      <section class="bl-hero bl-section" data-context="Hero – General Enquiry">
+        <div class="bl-container">
+          <div class="bl-hero-inner">
+            <div class="bl-hero-content">
+              <p class="bl-hero-eyebrow">Boom &amp; Scissor Lift Rentals in Pune</p>
+              <h1 class="bl-hero-title heading-font">
+                Your partner in <br>working at heights.
+              </h1>
+
+              <div class="bl-hero-badge-row">
+                <div class="bl-hero-badge">
+                  <span class="bl-dot"></span>
+                  <span>Certified operators • Ready-to-work machines</span>
+                </div>
+                <div class="bl-hero-badge">
+                  <span class="bl-dot"></span>
+                  <span>Daily, weekly &amp; monthly rentals</span>
+                </div>
+              </div>
+
+              <p class="bl-hero-text">
+                Hire safe and reliable boom lifts, scissor lifts, and aerial work
+                platforms across Pune. From one-day rentals to long-term projects, we
+                keep your teams productive and protected at every height.
+              </p>
+
+              <!-- chips -->
+              <div class="bl-hero-points">
+                <div class="bl-hero-chip">
+                  <span class="bl-dot"></span>
+                  <span>Reach up to 45m working heights</span>
+                </div>
+                <div class="bl-hero-chip">
+                  <span class="bl-dot"></span>
+                  <span>Quick mobilization anywhere in Pune</span>
+                </div>
+                <div class="bl-hero-chip">
+                  <span class="bl-dot"></span>
+                  <span>Safety-first approach with trained crew</span>
+                </div>
+                <div class="bl-hero-chip">
+                  <span class="bl-dot"></span>
+                  <span>Single contact for your entire site</span>
+                </div>
+              </div>
+
+              <div class="bl-hero-actions">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Hero – Need a quick rental quote"
+                >
+                  Get Quote Now
+                </button>
+
+                <button
+                  class="bl-hero-secondary"
+                  type="button"
+                  onclick="document.getElementById('fleet').scrollIntoView({behavior:'smooth'})"
+                >
+                  View Equipment Fleet
+                </button>
+              </div>
+
+              <p class="bl-hero-meta">
+                <strong>Serving construction, plants, events and maintenance
+                  projects</strong>
+                across Pune and surrounding regions.
+              </p>
+            </div>
+
+            <div class="bl-hero-media">
+              <div class="bl-hero-photo-stack">
+                <!-- background image -->
+                <div class="bl-hero-photo-bg">
+                  <img
+                    src="./images/new3.webp"
+                    alt="Boom lifts parked in yard"
+                  />
+                </div>
+                <!-- foreground image -->
+                <div class="bl-hero-photo-foreground">
+                  <img
+                    src="/images/scnew7.jpg"
+                    alt="Operator using boom lift at site"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section
+        class="bl-services bl-section"
+        data-context="Services – Rental, Sales, Training, Parts, Maintenance"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Our Services</p>
+            <h2 class="bl-section-title heading-font">
+              Rental, service and support from one partner.
+            </h2>
+            <p class="bl-section-subtitle">
+              We’re not just a rental desk. We help you plan access, supply the right
+              machines, and keep them performing across your project.
+            </p>
+          </div>
+
+          <div class="bl-services-row">
+            <div class="bl-service-chip">
+              <span>Rental</span>
+              <span>Flexible plans from a single day to long-term hire.</span>
+            </div>
+            <div class="bl-service-chip">
+              <span>Sales</span>
+              <span>New &amp; pre-owned access platforms with expert guidance.</span>
+            </div>
+            <div class="bl-service-chip">
+              <span>Training</span>
+              <span>On-site familiarization and safe-use briefings.</span>
+            </div>
+            <div class="bl-service-chip">
+              <span>Parts</span>
+              <span>Genuine spares to support your in-house fleet.</span>
+            </div>
+            <!-- <div class="bl-service-chip">
+              <span>Maintenance</span>
+              <span>Preventive and breakdown support for maximum uptime.</span>
+            </div> -->
+          </div>
+
+          <div class="bl-quote-cta-wrap">
+            <button
+              class="bl-quote-btn"
+              data-context="Services – Need support for rental / sales / service"
+            >
+              Get Service Quote
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERTISE -->
+      <section
+        class="bl-expertise bl-section"
+        data-context="Expertise – Safety, Sustainability, Digital Solutions"
+      >
+        <div class="bl-container">
+          <div class="bl-expertise-layout">
+            <div>
+              <p class="bl-section-kicker">Our Expertise</p>
+              <h2 class="bl-section-title heading-font">
+                More than machines. Expertise that keeps you safe.
+              </h2>
+              <p class="bl-section-subtitle">
+                Planning access at height is complex. We combine safety practices,
+                sustainable options and digital tools to make it simple for your team.
+              </p>
+              <p class="bl-expertise-note">
+                We align with site safety norms, conduct pre-use inspections, and log
+                every machine movement for full traceability.
+              </p>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Expertise – Need guidance on safe access solutions"
+                >
+                  Talk to an Expert
+                </button>
+              </div>
+            </div>
+
+            <div class="bl-expertise-steps">
+              <article class="bl-expertise-card">
+                <span class="bl-expertise-marker"></span>
+                <div class="bl-expertise-label">Safety</div>
+                <h3 class="bl-expertise-title heading-font">
+                  Built around safe work.
+                </h3>
+                <p class="bl-expertise-text">
+                  Pre-dispatch inspections, valid certifications, and clear operating
+                  procedures for every rental. We help you plan safe access routes,
+                  platform reach, and ground conditions.
+                </p>
+              </article>
+
+              <article class="bl-expertise-card">
+                <span class="bl-expertise-marker"></span>
+                <div class="bl-expertise-label">Sustainability</div>
+                <h3 class="bl-expertise-title heading-font">
+                  Cleaner options for sensitive sites.
+                </h3>
+                <p class="bl-expertise-text">
+                  Electric and hybrid lifts for malls, airports, data centres, and
+                  indoor projects where low noise and zero emissions matter.
+                </p>
+              </article>
+
+              <article class="bl-expertise-card">
+                <span class="bl-expertise-marker"></span>
+                <div class="bl-expertise-label">Digital</div>
+                <h3 class="bl-expertise-title heading-font">
+                  Transparent tracking &amp; reporting.
+                </h3>
+                <p class="bl-expertise-text">
+                  Digital job cards, utilization reports, and photo documentation help
+                  project teams track how each machine is used over the rental period.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INDUSTRIES -->
+      <section
+        class="bl-industries bl-section"
+        data-context="Industries – Construction, Energy, Events, Facility Management"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Industries We Serve</p>
+            <h2 class="bl-section-title heading-font">
+              One fleet, many job sites in and around Pune.
+            </h2>
+          </div>
+
+          <div class="bl-industries-layout">
+            <div class="bl-industries-grid">
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Construction &amp; Infrastructure</div>
+                <div class="bl-industry-desc">
+                  Structural works, cladding, glazing, and façade maintenance for new
+                  builds and retrofits.
+                </div>
+              </div>
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Energy &amp; Utilities</div>
+                <div class="bl-industry-desc">
+                  Safe access around plants, substations, pipelines and utility
+                  corridors.
+                </div>
+              </div>
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Events &amp; Media</div>
+                <div class="bl-industry-desc">
+                  Lifts for lighting rigs, truss work, staging, and outdoor event
+                  setups.
+                </div>
+              </div>
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Facility Management</div>
+                <div class="bl-industry-desc">
+                  Indoor access for MEP work, cleaning, painting, and signage in malls
+                  and campuses.
+                </div>
+              </div>
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Warehousing &amp; Logistics</div>
+                <div class="bl-industry-desc">
+                  Racking installations, fire system works, and ongoing maintenance in
+                  high-bay warehouses.
+                </div>
+              </div>
+              <div class="bl-industry-card">
+                <div class="bl-industry-name">Industrial Maintenance</div>
+                <div class="bl-industry-desc">
+                  Shutdowns, retrofits, and routine inspections in manufacturing and
+                  process plants.
+                </div>
+              </div>
+            </div>
+
+            <aside class="bl-industries-side">
+              <div class="bl-industries-side-tag">Site-by-site planning</div>
+              <h3 class="bl-industries-side-title heading-font">
+                One partner for all your access needs.
+              </h3>
+              <p class="bl-industries-side-text">
+                Multi-site work in and around Pune? We coordinate machines,
+                operators, and schedules so your teams can move from site to site
+                without delays.
+              </p>
+              <div class="bl-industries-pills">
+                <span class="bl-industries-pill">Construction clusters</span>
+                <span class="bl-industries-pill">Industrial estates</span>
+                <span class="bl-industries-pill">IT &amp; business parks</span>
+                <span class="bl-industries-pill">Malls &amp; airports</span>
+              </div>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Industries – Need lifts for multiple sites"
+                >
+                  Plan My Sites
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMITMENTS -->
+      <section
+        class="bl-commitments bl-section"
+        data-context="Commitments – Safety, On-time Delivery, Availability, Expert Advice"
+      >
+        <div class="bl-container">
+          <div class="bl-commitments-layout">
+            <div>
+              <div class="bl-section-header">
+                <p class="bl-section-kicker">Our Commitments</p>
+                <h2 class="bl-section-title heading-font">
+                  Clear promises, delivered on every rental.
+                </h2>
+                <p class="bl-section-subtitle">
+                  We know that delays at height can stall entire projects. Our
+                  processes are built to keep your work moving smoothly.
+                </p>
+              </div>
+              <div class="bl-commitments-grid">
+                <div class="bl-commit-card">
+                  <div class="bl-commit-title">Safety First</div>
+                  <div class="bl-commit-text">
+                    Every machine is checked before dispatch with valid certifications
+                    and safety devices verified.
+                  </div>
+                </div>
+                <div class="bl-commit-card">
+                  <div class="bl-commit-title">On-time Delivery</div>
+                  <div class="bl-commit-text">
+                    Coordinated logistics ensure your lift reaches site when the team
+                    and crane windows are ready.
+                  </div>
+                </div>
+                <div class="bl-commit-card">
+                  <div class="bl-commit-title">Machine Availability</div>
+                  <div class="bl-commit-text">
+                    Multiple models in each height band so we can support urgent
+                    requirements and breakdown swaps.
+                  </div>
+                </div>
+                <div class="bl-commit-card">
+                  <div class="bl-commit-title">Expert Advice</div>
+                  <div class="bl-commit-text">
+                    We help you choose the right platform based on reach, load, ground
+                    conditions, and job duration.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="bl-commit-side">
+              <img
+                src="./images/new1.webp"
+                alt="Team discussing access plan"
+                class="bl-commit-img"
+              />
+              <h3 class="bl-commit-side-title heading-font">
+                Need a dependable access partner?
+              </h3>
+              <p class="bl-commit-side-text">
+                Share your upcoming projects with us and we’ll build a rental plan
+                that ensures the right lifts are available when you need them.
+              </p>
+              <button
+                class="bl-quote-btn"
+                data-context="Commitments – Need a reliable partner for ongoing work"
+              >
+                Get a Reliable Partner
+              </button>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLEET -->
+      <section
+        id="fleet"
+        class="bl-fleet bl-section"
+        data-context="Fleet – Boom lifts, Scissor lifts, Spider, Vertical lifts"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Fleet Highlights</p>
+            <h2 class="bl-section-title heading-font">
+              The right machine for every height and space.
+            </h2>
+            <p class="bl-section-subtitle">
+              Compact electrics for indoor work, rough-terrain booms for outdoor
+              sites, and specialized machines for tight or sensitive locations.
+            </p>
+          </div>
+
+          <div class="bl-fleet-layout">
+            <div>
+              <ul class="bl-fleet-list">
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Articulated Boom Lifts</div>
+                  <div class="bl-fleet-text">
+                    Ideal for reaching up and over obstacles such as pipes, canopies,
+                    and structures.
+                  </div>
+                </li>
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Telescopic Boom Lifts</div>
+                  <div class="bl-fleet-text">
+                    Maximum horizontal outreach for large open sites and industrial
+                    plants.
+                  </div>
+                </li>
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Scissor Lifts</div>
+                  <div class="bl-fleet-text">
+                    Stable vertical platforms for installation and finishing jobs,
+                    indoor and outdoor.
+                  </div>
+                </li>
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Spider &amp; Compact Lifts</div>
+                  <div class="bl-fleet-text">
+                    Lightweight tracked machines to access narrow entries and delicate
+                    floors.
+                  </div>
+                </li>
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Vertical Mast Lifts</div>
+                  <div class="bl-fleet-text">
+                    Manoeuvrable solutions for tight aisles, corridors and congested
+                    areas.
+                  </div>
+                </li>
+                <li class="bl-fleet-item">
+                  <div class="bl-fleet-name">Custom Solutions</div>
+                  <div class="bl-fleet-text">
+                    If your site is unique, we’ll recommend the most suitable access
+                    combination for the job.
+                  </div>
+                </li>
+              </ul>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Fleet – Need quote for specific equipment category"
+                >
+                  Get Equipment Recommendation
+                </button>
+              </div>
+            </div>
+
+            <aside class="bl-fleet-side">
+              <img
+                src="./images/new7.webp"
+                alt="Engineer reviewing lift options"
+                class="bl-fleet-img"
+              />
+              <h3 class="bl-fleet-side-title heading-font">
+                Unsure which lift you need?
+              </h3>
+              <p class="bl-fleet-side-text">
+                Share your working height, number of operators, and site photos. Our
+                team will suggest the safest, most economical machine for your job.
+              </p>
+              <div class="bl-fleet-badges">
+                <span class="bl-fleet-badge">Site-specific guidance</span>
+                <span class="bl-fleet-badge">Photos &amp; drawings review</span>
+                <span class="bl-fleet-badge">Quick budgetary quotes</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section
+        class="bl-final-cta bl-section"
+        data-context="Final CTA – Ready to plan next project"
+      >
+        <div class="bl-final-inner">
+          <span class="bl-final-eyebrow">Ready when you are</span>
+          <h2 class="bl-final-title heading-font">
+            Ready to plan your next work at height in Pune?
+          </h2>
+          <p class="bl-final-text">
+            Tell us about your project, working height and timeline. We’ll come back
+            with a practical access plan and a clear quote for the right machines.
+          </p>
+          <button
+            class="bl-quote-btn"
+            data-context="Final CTA – Project planning enquiry"
+          >
+            Send My Project Details
+          </button>
+          <p class="bl-final-meta">
+            Prefer a quick call? Reach us on <strong>+91 99999 99999</strong> or
+            WhatsApp from the top bar.
+          </p>
+        </div>
+      </section>
+
+      <!-- INLINE FORM (FULL WIDTH) -->
+      <section class="bl-inline-form" id="enquiry-section">
+        <div id="inline-form-container"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MODAL FORM -->
+    <div class="bl-modal-backdrop" id="quote-modal" aria-hidden="true">
+      <div class="bl-modal-dialog">
+        <button class="bl-modal-close" type="button" id="modal-close-btn">
+          &times;
+        </button>
+        <div id="modal-form-container"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* NAVBAR */
+        fetch("navbar.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("nav-placeholder").innerHTML = html;
+
+            const nav = document.querySelector(".bl-navbar");
+            if (!nav) return;
+            const toggle = nav.querySelector(".bl-nav-toggle");
+            if (toggle) {
+              toggle.addEventListener("click", function () {
+                nav.classList.toggle("is-open");
+              });
+            }
+
+            const links = nav.querySelectorAll(".bl-nav-link, .bl-whatsapp-btn");
+            links.forEach(function (link) {
+              link.addEventListener("click", function () {
+                nav.classList.remove("is-open");
+              });
+            });
+          })
+          .catch((err) => console.error("Error loading navbar:", err));
+
+        /* FOOTER */
+        fetch("footer.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("footer-placeholder").innerHTML = html;
+          })
+          .catch((err) => console.error("Error loading footer:", err));
+
+        /* FORM (modal + inline) */
+        const formLoadingPromise = fetch("form.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("modal-form-container").innerHTML = html;
+            document.getElementById("inline-form-container").innerHTML = html;
+
+            const modalCard = document.querySelector(
+              "#modal-form-container .bl-enquiry-card"
+            );
+            if (modalCard) modalCard.classList.add("is-visible");
+
+            const inlineCard = document.querySelector(
+              "#inline-form-container .bl-enquiry-card"
+            );
+            if (inlineCard) inlineCard.classList.add("is-visible");
+
+            const modalForm = document.querySelector(
+              "#modal-form-container form"
+            );
+            if (modalForm) {
+              const hidden = document.createElement("input");
+              hidden.type = "hidden";
+              hidden.name = "enquiry_source";
+              hidden.id = "enquiry_source";
+              modalForm.appendChild(hidden);
+            }
+          })
+          .catch((err) => console.error("Error loading form:", err));
+
+        /* Scroll reveal */
+        const sections = document.querySelectorAll(".bl-section");
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.25 }
+          );
+          sections.forEach((s) => observer.observe(s));
+        } else {
+          sections.forEach((s) => s.classList.add("is-visible"));
+        }
+
+        /* Modal behaviour */
+        const modal = document.getElementById("quote-modal");
+        const modalClose = document.getElementById("modal-close-btn");
+
+        function openModal(contextText) {
+          formLoadingPromise.then(function () {
+            const hiddenField = document.getElementById("enquiry_source");
+            if (hiddenField) hiddenField.value = contextText || "";
+
+            const titleEl = document.querySelector(
+              "#modal-form-container .bl-enquiry-form-title"
+            );
+            if (titleEl) {
+              titleEl.textContent =
+                "Enquiry Form – " + (contextText || "Website Enquiry");
+            }
+
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+          });
+        }
+
+        function closeModal() {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+        }
+
+        modalClose.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
+
+        /* Bind all Get Quote buttons */
+        function bindQuoteButtons() {
+          const buttons = document.querySelectorAll(".bl-quote-btn");
+          buttons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              const ctx =
+                btn.getAttribute("data-context") ||
+                btn.closest(".bl-section")?.getAttribute("data-context") ||
+                "Website Enquiry";
+              openModal(ctx);
+            });
+          });
+        }
+
+        bindQuoteButtons();
+      });
+    </script>
+  </body>
+</html>

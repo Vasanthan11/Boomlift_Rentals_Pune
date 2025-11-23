@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact | BoomLift Rentals Pune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap");
+
+      :root {
+        --bl-navy: #465c88;
+        --bl-orange: #ff7a30;
+        --bl-black: #000000;
+        --bl-cream: #e9e3df;
+
+        --bl-radius-lg: 20px;
+        --bl-radius-pill: 999px;
+        --bl-transition-fast: 0.2s ease;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding-top: 70px; /* for fixed navbar */
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 1rem;
+        background: var(--bl-cream);
+        color: #111111;
+      }
+
+      .heading-font {
+        font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      main {
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .bl-container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 1.2rem;
+      }
+
+      /* Sections + reveal */
+      .bl-section {
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .bl-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bl-section-header {
+        margin-bottom: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .bl-section-kicker {
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+      }
+
+      .bl-section-title {
+        font-size: 1.8rem;
+      }
+
+      .bl-section-subtitle {
+        font-size: 1.1rem;
+        max-width: 640px;
+        color: #343434;
+        line-height: 1.7;
+      }
+
+      .bl-quote-cta-wrap {
+        margin-top: 1.8rem;
+      }
+
+      /* Buttons – no shadow */
+      .bl-quote-btn,
+      .bl-secondary-btn {
+        border-radius: 14px;
+        padding: 0.9rem 1.6rem;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: background var(--bl-transition-fast),
+          color var(--bl-transition-fast),
+          border-color var(--bl-transition-fast),
+          transform var(--bl-transition-fast);
+      }
+
+      .bl-quote-btn {
+        background: var(--bl-orange);
+        color: var(--bl-black);
+      }
+
+      .bl-quote-btn:hover {
+        background: var(--bl-black);
+        color: var(--bl-orange);
+        transform: translateY(-1px);
+      }
+
+      .bl-secondary-btn {
+        background: transparent;
+        color: var(--bl-black);
+        border-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .bl-secondary-btn:hover {
+        background: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      /* SECTION 1 – CONTACT HERO */
+      .bl-hero {
+        background: radial-gradient(circle at top left, #f8efe7, var(--bl-cream));
+        padding-top: 3rem;
+        padding-bottom: 3.4rem;
+      }
+
+      .bl-hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        gap: 2.8rem;
+        align-items: center;
+      }
+
+      .bl-hero-kicker {
+        font-size: 1rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--bl-navy);
+        margin-bottom: 0.6rem;
+      }
+
+      .bl-hero-title {
+        font-size: 2.2rem;
+        line-height: 1.15;
+        margin: 0 0 0.8rem;
+        color: var(--bl-black);
+      }
+
+      .bl-hero-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 580px;
+        color: #333333;
+        margin-bottom: 1.5rem;
+      }
+
+      .bl-contact-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-bottom: 1.7rem;
+      }
+
+      .bl-contact-chip {
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px dashed rgba(0, 0, 0, 0.12);
+        font-size: 1rem;
+      }
+
+      .bl-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.2rem;
+      }
+
+      .bl-hero-meta {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .bl-hero-meta strong {
+        color: var(--bl-black);
+      }
+
+      .bl-hero-media {
+        position: relative;
+      }
+
+      .bl-hero-card {
+        border-radius: 24px;
+        padding: 1.4rem 1.3rem;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1rem;
+      }
+
+      .bl-hero-card-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .bl-hero-contact-line {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-hero-contact-label {
+        font-weight: 600;
+      }
+
+      .bl-hero-hours {
+        margin-top: 0.7rem;
+        font-size: 1rem;
+        color: #444;
+      }
+
+      /* SECTION 2 – CONTACT DETAILS & SERVICE AREA */
+      .bl-contact-info {
+        background: #ffffff;
+      }
+
+      .bl-contact-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2.4rem;
+        align-items: flex-start;
+      }
+
+      .bl-contact-details-card {
+        border-radius: 20px;
+        padding: 1.4rem 1.3rem;
+        background: var(--bl-cream);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1rem;
+      }
+
+      .bl-contact-details-heading {
+        font-size: 1.3rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .bl-contact-detail-row {
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+      }
+
+      .bl-contact-detail-label {
+        font-weight: 600;
+      }
+
+      .bl-contact-address {
+        margin-top: 0.7rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .bl-contact-note {
+        margin-top: 0.7rem;
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .bl-service-area-card {
+        border-radius: 20px;
+        padding: 1.4rem 1.3rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.15),
+            transparent
+          ),
+          #faf8f6;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        font-size: 1rem;
+      }
+
+      .bl-service-area-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .bl-service-area-text {
+        font-size: 1.05rem;
+        color: #444;
+        line-height: 1.7;
+        margin-bottom: 0.8rem;
+      }
+
+      .bl-service-area-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 0.8rem;
+        font-size: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .bl-service-area-pill {
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .bl-service-map {
+        margin-top: 1rem;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #d3c9c1;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.05rem;
+        color: #333;
+      }
+
+      /* SECTION 3 – WHAT TO SHARE / ENQUIRY HELP */
+      .bl-contact-help {
+        background: #111111;
+        color: #f5f5f5;
+      }
+
+      .bl-contact-help .bl-section-kicker {
+        color: var(--bl-cream);
+      }
+
+      .bl-contact-help .bl-section-subtitle {
+        color: #e0e0e0;
+      }
+
+      .bl-contact-help-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+        gap: 2.6rem;
+        align-items: flex-start;
+      }
+
+      .bl-contact-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .bl-contact-card {
+        border-radius: 18px;
+        padding: 1.2rem 1.1rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: 1rem;
+      }
+
+      .bl-contact-card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--bl-orange);
+        margin-bottom: 0.4rem;
+      }
+
+      .bl-contact-card-text {
+        font-size: 1rem;
+        color: #f1f1f1;
+        line-height: 1.6;
+        margin-bottom: 0.6rem;
+      }
+
+      .bl-contact-card-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .bl-contact-card-list li {
+        margin-bottom: 0.3rem;
+      }
+
+      .bl-contact-card-list li::before {
+        content: "• ";
+        color: var(--bl-cream);
+      }
+
+      .bl-contact-help-side {
+        border-radius: 20px;
+        padding: 1.4rem 1.3rem;
+        background: radial-gradient(
+            circle at top left,
+            rgba(70, 92, 136, 0.6),
+            transparent
+          ),
+          #000000;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 1rem;
+      }
+
+      .bl-contact-help-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .bl-contact-help-text {
+        font-size: 1.05rem;
+        color: #f1f1f1;
+        line-height: 1.7;
+        margin-bottom: 0.9rem;
+      }
+
+      .bl-contact-help-meta {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+      }
+
+      /* INLINE FORM */
+      .bl-inline-form {
+        background: var(--bl-cream);
+      }
+
+      /* MODAL */
+      .bl-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 1rem;
+      }
+
+      .bl-modal-backdrop.is-open {
+        display: flex;
+      }
+
+      .bl-modal-dialog {
+        position: relative;
+        max-width: 1040px;
+        width: 100%;
+        max-height: 95vh;
+        overflow-y: auto;
+        border-radius: 24px;
+      }
+
+      .bl-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        border: 1px solid rgba(233, 227, 223, 0.5);
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        font-size: 1.6rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+
+      .bl-modal-close:hover {
+        background: #000000;
+      }
+
+      #modal-form-container section {
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        body {
+          padding-top: 64px;
+        }
+
+        .bl-hero-inner {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-hero-media {
+          order: -1;
+        }
+
+        .bl-hero-card {
+          max-width: 420px;
+          margin: 0 auto;
+        }
+
+        .bl-contact-layout,
+        .bl-contact-help-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .bl-contact-cards {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .bl-section {
+          padding: 3.2rem 0;
+        }
+
+        .bl-section-title {
+          font-size: 1.6rem;
+        }
+
+        .bl-hero-title {
+          font-size: 2rem;
+        }
+
+        .bl-service-map {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR FRAGMENT -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+      <!-- SECTION 1: CONTACT HERO -->
+      <section class="bl-hero bl-section" data-context="Contact – General">
+        <div class="bl-container">
+          <div class="bl-hero-inner">
+            <div>
+              <p class="bl-hero-kicker">Contact</p>
+              <h1 class="bl-hero-title heading-font">
+                Let’s talk about your next work at height in Pune.
+              </h1>
+              <p class="bl-hero-text">
+                Whether you’re planning a new project, a shutdown, or routine
+                maintenance, we’re here to help you choose the right boom or scissor
+                lift and line it up with your schedule.
+              </p>
+
+              <div class="bl-contact-chips">
+                <span class="bl-contact-chip">Quick quotes on WhatsApp &amp; email</span>
+                <span class="bl-contact-chip">Support from 9:00 AM to 7:00 PM</span>
+                <span class="bl-contact-chip">Pune &amp; surrounding regions</span>
+              </div>
+
+              <div class="bl-hero-actions">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Contact – Open enquiry form from hero"
+                >
+                  Open Enquiry Form
+                </button>
+                <a href="tel:+919999999999" class="bl-secondary-btn">
+                  Call: +91 99999 99999
+                </a>
+              </div>
+
+              <p class="bl-hero-meta">
+                <strong>Have drawings or photos?</strong> Mention it in your enquiry and
+                we’ll share the best way to send them across.
+              </p>
+            </div>
+
+            <div class="bl-hero-media">
+              <div class="bl-hero-card">
+                <h2 class="bl-hero-card-title heading-font">
+                  BoomLift Rentals Pune – Contact Details
+                </h2>
+                <p class="bl-hero-contact-line">
+                  <span class="bl-hero-contact-label">Phone: </span>
+                  <a href="tel:+919999999999">+91 99999 99999</a>
+                </p>
+                <p class="bl-hero-contact-line">
+                  <span class="bl-hero-contact-label">Email: </span>
+                  <a href="mailto:info@boomliftrentalsdelhi.com">
+                    info@boomliftrentalsdelhi.com
+                  </a>
+                </p>
+                <p class="bl-hero-hours">
+                  <strong>Working hours:</strong> Monday to Saturday, 9:00 AM to 7:00 PM
+                  (project support for critical jobs can be coordinated separately).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CONTACT DETAILS & SERVICE AREA -->
+      <section
+        class="bl-contact-info bl-section"
+        data-context="Contact – Details & Service Area"
+      >
+        <div class="bl-container">
+          <div class="bl-section-header">
+            <p class="bl-section-kicker">Where we operate</p>
+            <h2 class="bl-section-title heading-font">
+              Office contact and Pune service coverage.
+            </h2>
+            <p class="bl-section-subtitle">
+              We dispatch boom and scissor lifts across Pune and nearby industrial and
+              infrastructure clusters. Share your site location and we’ll confirm exact
+              coverage.
+            </p>
+          </div>
+
+          <div class="bl-contact-layout">
+            <div class="bl-contact-details-card">
+              <h3 class="bl-contact-details-heading heading-font">
+                Office &amp; primary contact.
+              </h3>
+              <p class="bl-contact-detail-row">
+                <span class="bl-contact-detail-label">Primary phone:&nbsp;</span>
+                <a href="tel:+919999999999">+91 99999 99999</a>
+              </p>
+              <p class="bl-contact-detail-row">
+                <span class="bl-contact-detail-label">Email:&nbsp;</span>
+                <a href="mailto:info@boomliftrentalsdelhi.com">
+                  info@boomliftrentalsdelhi.com
+                </a>
+              </p>
+
+              <p class="bl-contact-address">
+                <span class="bl-contact-detail-label">Office address (for
+                  communication):</span><br />
+                BoomLift Rentals Pune<br />
+                [Your Street Address]<br />
+                Pune, Maharashtra – [PIN Code]<br />
+                India
+              </p>
+
+              <p class="bl-contact-note">
+                Site visits and meetings are usually scheduled directly at your project
+                location. Let us know your site address and access timings when you
+                enquire.
+              </p>
+            </div>
+
+            <aside class="bl-service-area-card">
+              <h3 class="bl-service-area-title heading-font">
+                Service area in and around Pune.
+              </h3>
+              <p class="bl-service-area-text">
+                We support projects inside city limits and nearby industrial belts,
+                logistics hubs and infrastructure corridors.
+              </p>
+              <div class="bl-service-area-list">
+                <span class="bl-service-area-pill">Pimpri-Chinchwad</span>
+                <span class="bl-service-area-pill">Chakan</span>
+                <span class="bl-service-area-pill">Ranjangaon</span>
+                <span class="bl-service-area-pill">Talegaon</span>
+                <span class="bl-service-area-pill">Hinjewadi &amp; IT parks</span>
+                <span class="bl-service-area-pill">Industrial estates nearby</span>
+              </div>
+
+              <div class="bl-service-map">
+                Map / location overview (embed Google Map here later)
+              </div>
+
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Contact – Confirm my site coverage"
+                >
+                  Check My Site Coverage
+                </button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: WHAT TO SHARE WHEN YOU CONTACT US -->
+      <section
+        class="bl-contact-help bl-section"
+        data-context="Contact – What to share"
+      >
+        <div class="bl-container">
+          <div class="bl-contact-help-layout">
+            <div>
+              <div class="bl-section-header">
+                <p class="bl-section-kicker">What to share</p>
+                <h2 class="bl-section-title heading-font">
+                  A few details help us reply faster and more accurately.
+                </h2>
+                <p class="bl-section-subtitle">
+                  You don’t need a full technical drawing to start. Even basic
+                  information helps us suggest the right machine and a realistic rental
+                  plan for your site.
+                </p>
+              </div>
+
+              <div class="bl-contact-cards">
+                <article class="bl-contact-card">
+                  <h3 class="bl-contact-card-title heading-font">
+                    New project enquiry
+                  </h3>
+                  <p class="bl-contact-card-text">
+                    For upcoming projects, these points help us share an initial plan
+                    and budgetary quote.
+                  </p>
+                  <ul class="bl-contact-card-list">
+                    <li>Site location and tentative start date</li>
+                    <li>Approximate working heights and areas</li>
+                    <li>Indoor / outdoor and floor conditions</li>
+                  </ul>
+                </article>
+
+                <article class="bl-contact-card">
+                  <h3 class="bl-contact-card-title heading-font">
+                    Short-term or urgent need
+                  </h3>
+                  <p class="bl-contact-card-text">
+                    For shutdowns, breakdowns or last-minute jobs, tell us your
+                    timeframe clearly.
+                  </p>
+                  <ul class="bl-contact-card-list">
+                    <li>Earliest possible start and latest finish</li>
+                    <li>Number of days or shifts you expect</li>
+                    <li>Any access constraints for delivery</li>
+                  </ul>
+                </article>
+
+                <article class="bl-contact-card">
+                  <h3 class="bl-contact-card-title heading-font">
+                    Long-term rentals
+                  </h3>
+                  <p class="bl-contact-card-text">
+                    If you’re planning multi-month works, we can suggest efficient
+                    combinations.
+                  </p>
+                  <ul class="bl-contact-card-list">
+                    <li>Overall project duration and phases</li>
+                    <li>Number of lifts you expect to need</li>
+                    <li>Any internal crew or operators available</li>
+                  </ul>
+                </article>
+
+                <article class="bl-contact-card">
+                  <h3 class="bl-contact-card-title heading-font">
+                    Safety &amp; documentation
+                  </h3>
+                  <p class="bl-contact-card-text">
+                    Share any specific safety or documentation requirements your site
+                    follows.
+                  </p>
+                  <ul class="bl-contact-card-list">
+                    <li>HSE / safety induction rules on site</li>
+                    <li>Certificates or formats you require</li>
+                    <li>Special PPE or work permit norms</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+
+            <aside class="bl-contact-help-side">
+              <h3 class="bl-contact-help-title heading-font">
+                Ready to share your requirement?
+              </h3>
+              <p class="bl-contact-help-text">
+                Use the enquiry form to send us these details in one place. You can
+                also mention if you prefer a call-back or email response, and we’ll
+                follow that.
+              </p>
+              <div class="bl-quote-cta-wrap">
+                <button
+                  class="bl-quote-btn"
+                  data-context="Contact – Detailed requirement from help section"
+                >
+                  Share My Requirement
+                </button>
+              </div>
+              <p class="bl-contact-help-meta">
+                You can always start with a simple message – we’ll ask follow-up
+                questions if we need more information.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- INLINE FORM (BOTTOM, SAME FRAGMENT AS OTHER PAGES) -->
+      <section class="bl-inline-form" id="enquiry-section">
+        <div id="inline-form-container"></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- MODAL FORM -->
+    <div class="bl-modal-backdrop" id="quote-modal" aria-hidden="true">
+      <div class="bl-modal-dialog">
+        <button class="bl-modal-close" type="button" id="modal-close-btn">
+          &times;
+        </button>
+        <div id="modal-form-container"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* NAVBAR */
+        fetch("navbar.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("nav-placeholder").innerHTML = html;
+
+            const nav = document.querySelector(".bl-navbar");
+            if (!nav) return;
+
+            const toggle = nav.querySelector(".bl-nav-toggle");
+            if (toggle) {
+              toggle.addEventListener("click", function () {
+                nav.classList.toggle("is-open");
+              });
+            }
+
+            const links = nav.querySelectorAll(".bl-nav-link, .bl-whatsapp-btn");
+            links.forEach(function (link) {
+              link.addEventListener("click", function () {
+                nav.classList.remove("is-open");
+              });
+            });
+
+            /* highlight Contact link */
+            // const current = nav.querySelector(".bl-nav-link[href*='contact']");
+            // if (current) current.classList.add("active");
+          })
+          .catch((err) => console.error("Error loading navbar:", err));
+
+        /* FOOTER */
+        fetch("footer.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("footer-placeholder").innerHTML = html;
+          })
+          .catch((err) => console.error("Error loading footer:", err));
+
+        /* FORM (modal + inline) */
+        const formLoadingPromise = fetch("form.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("modal-form-container").innerHTML = html;
+            document.getElementById("inline-form-container").innerHTML = html;
+
+            const modalCard = document.querySelector(
+              "#modal-form-container .bl-enquiry-card"
+            );
+            if (modalCard) modalCard.classList.add("is-visible");
+
+            const inlineCard = document.querySelector(
+              "#inline-form-container .bl-enquiry-card"
+            );
+            if (inlineCard) inlineCard.classList.add("is-visible");
+
+            const modalForm = document.querySelector(
+              "#modal-form-container form"
+            );
+            if (modalForm) {
+              const hidden = document.createElement("input");
+              hidden.type = "hidden";
+              hidden.name = "enquiry_source";
+              hidden.id = "enquiry_source";
+              modalForm.appendChild(hidden);
+            }
+          })
+          .catch((err) => console.error("Error loading form:", err));
+
+        /* Scroll reveal */
+        const sections = document.querySelectorAll(".bl-section");
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.25 }
+          );
+          sections.forEach((s) => observer.observe(s));
+        } else {
+          sections.forEach((s) => s.classList.add("is-visible"));
+        }
+
+        /* Modal behaviour */
+        const modal = document.getElementById("quote-modal");
+        const modalClose = document.getElementById("modal-close-btn");
+
+        function openModal(contextText) {
+          formLoadingPromise.then(function () {
+            const hiddenField = document.getElementById("enquiry_source");
+            if (hiddenField) hiddenField.value = contextText || "";
+
+            const titleEl = document.querySelector(
+              "#modal-form-container .bl-enquiry-form-title"
+            );
+            if (titleEl) {
+              titleEl.textContent =
+                "Enquiry Form – " + (contextText || "Contact Page Enquiry");
+            }
+
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+          });
+        }
+
+        function closeModal() {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+        }
+
+        modalClose.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
+
+        /* Bind all enquiry buttons */
+        function bindQuoteButtons() {
+          const buttons = document.querySelectorAll(".bl-quote-btn");
+          buttons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              const ctx =
+                btn.getAttribute("data-context") ||
+                btn.closest(".bl-section")?.getAttribute("data-context") ||
+                "Contact Page Enquiry";
+              openModal(ctx);
+            });
+          });
+        }
+
+        bindQuoteButtons();
+      });
+    </script>
+  </body>
+</html>

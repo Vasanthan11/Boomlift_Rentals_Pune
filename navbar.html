@@ -1,0 +1,365 @@
+<!-- navbar.html -->
+<nav class="bl-navbar">
+  <div class="bl-nav-inner">
+    <!-- Logo -->
+    <a href="index.html" class="bl-logo">
+      <img
+        src="./images/logo-pn.png"
+        alt="Boom Lift Rentals Pune"
+        class="bl-logo-img"
+      />
+    </a>
+
+    <!-- Mobile toggle -->
+    <button class="bl-nav-toggle" aria-label="Toggle navigation">
+      <span class="bl-nav-toggle-icon bl-nav-toggle-hamburger">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="bl-nav-toggle-icon bl-nav-toggle-close">&times;</span>
+    </button>
+
+    <!-- Links + WhatsApp -->
+    <div class="bl-nav-links-wrapper">
+      <div class="bl-nav-links">
+        <a href="index.html" class="bl-nav-link">Home</a>
+        <a href="boom-lift-rentals.html" class="bl-nav-link">Boom Lift Rentals</a>
+        <a href="scissor-lift-rentals.html" class="bl-nav-link">Scissor Lift Rentals</a>
+        <a href="blog.html" class="bl-nav-link">Blog</a>
+        <a href="contact.html" class="bl-nav-link">Contact</a>
+      </div>
+
+      <a
+        href="https://wa.me/91XXXXXXXXXX"
+        target="_blank"
+        rel="noopener"
+        class="bl-whatsapp-btn"
+      >
+        <span class="bl-whatsapp-dot"></span>
+        <span class="bl-whatsapp-text">WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap");
+
+  :root {
+    --bl-navy: #465c88;
+    --bl-orange: #ff7a30;
+    --bl-black: #000000;
+    --bl-cream: #e9e3df;
+
+    --bl-radius-pill: 999px;
+    --bl-radius-lg: 16px;
+    --bl-shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.12);
+    --bl-transition-fast: 0.2s ease;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body,
+  button,
+  input,
+  textarea {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  .heading-font {
+    font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+ .bl-navbar {
+  position: fixed;          /* was sticky */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(
+    135deg,
+    rgba(70, 92, 136, 0.96),
+    rgba(0, 0, 0, 0.96)
+  );
+  color: #ffffff;
+  border-bottom: 3px solid var(--bl-orange);
+  box-shadow: var(--bl-shadow-soft);
+}
+
+  .bl-nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.7rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  /* Logo */
+  .bl-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    /* padding: 0.25rem 0.5rem; */
+    /* border-radius: var(--bl-radius-pill); */
+    /* background: rgba(233, 227, 223, 0.06); */
+    /* border: 1px solid rgba(233, 227, 223, 0.2); */
+    /* backdrop-filter: blur(10px); */
+  }
+
+  .bl-logo-img {
+    display: block;
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Links wrapper */
+  .bl-nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .bl-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.15rem;
+    border-radius: var(--bl-radius-pill);
+    background: rgba(233, 227, 223, 0.08);
+    border: 1px solid rgba(233, 227, 223, 0.2);
+  }
+
+  .bl-nav-link {
+    position: relative;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5f5f5;
+    opacity: 0.85;
+    transition: opacity var(--bl-transition-fast),
+      transform var(--bl-transition-fast);
+  }
+
+  .bl-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.25rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--bl-orange), var(--bl-cream));
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--bl-transition-fast);
+  }
+
+  .bl-nav-link:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .bl-nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .bl-nav-link.active {
+    opacity: 1;
+  }
+
+  .bl-nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  /* WhatsApp button */
+  .bl-whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    border-radius: var(--bl-radius-pill);
+    padding: 0.45rem 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    background: #25d366;
+    color: var(--bl-black);
+    border: 1px solid #1e9f4f;
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    transform: translateY(0);
+    transition: transform var(--bl-transition-fast),
+      box-shadow var(--bl-transition-fast),
+      background var(--bl-transition-fast),
+      color var(--bl-transition-fast),
+      border-color var(--bl-transition-fast);
+  }
+
+  .bl-whatsapp-btn:hover {
+    background: var(--bl-black);
+    color: #25d366;
+    border-color: #25d366;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .bl-whatsapp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #0f0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.75);
+  }
+
+  .bl-whatsapp-text {
+    white-space: nowrap;
+  }
+
+  /* Toggle button (mobile) */
+  .bl-nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--bl-radius-pill);
+    border: 1px solid rgba(233, 227, 223, 0.5);
+    background: rgba(233, 227, 223, 0.08);
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    transition: background var(--bl-transition-fast),
+      transform var(--bl-transition-fast);
+  }
+
+  .bl-nav-toggle:hover {
+    background: rgba(233, 227, 223, 0.18);
+    transform: translateY(-1px);
+  }
+
+  .bl-nav-toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .bl-nav-toggle-hamburger {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bl-nav-toggle-hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  .bl-nav-toggle-close {
+    display: none;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  /* Mobile behavior */
+  @media (max-width: 768px) {
+    .bl-nav-inner {
+      padding: 0.6rem 1rem;
+    }
+
+    .bl-nav-links-wrapper {
+      position: fixed;
+      top: 69px;
+      left: 10px;
+      right: 10px;
+      border-radius: var(--bl-radius-lg);
+      background: radial-gradient(
+        circle at top left,
+        rgba(233, 227, 223, 0.98),
+        rgba(70, 92, 136, 0.98)
+      );
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: var(--bl-shadow-soft);
+      padding: 1rem 1rem 0.9rem;
+      flex-direction: column;
+      gap: 0.75rem;
+      transform: translateY(-120%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .bl-navbar.is-open .bl-nav-links-wrapper {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bl-nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .bl-nav-link {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      border-radius: var(--bl-radius-lg);
+      color: var(--bl-black);
+      opacity: 0.9;
+    }
+
+    .bl-nav-link::after {
+      display: none;
+    }
+
+    .bl-nav-link:hover,
+    .bl-nav-link.active {
+      background: rgba(0, 0, 0, 0.07);
+      transform: none;
+    }
+
+    .bl-whatsapp-btn {
+      width: 100%;
+      justify-content: center;
+      box-shadow: none;
+      border-radius: var(--bl-radius-lg);
+    }
+
+    .bl-nav-toggle {
+      display: inline-flex;
+    }
+
+    .bl-navbar.is-open .bl-nav-toggle-hamburger {
+      display: none;
+    }
+
+    .bl-navbar.is-open .bl-nav-toggle-close {
+      display: inline-flex;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .bl-logo-img {
+      height: 34px;
+    }
+  }
+</style>
