@@ -3,18 +3,18 @@
 // CONFIGURATION
 // --------------------
 
-// Email where you want to receive enquiries
-$receiver_email = "info@boomliftrentalsdelhi.com";  // CHANGE THIS
+// Email where enquiries will be received
+$receiver_email = "info@boomliftrentpune.com";  // UPDATED EMAIL ID
 
-// Subject of email
-$email_subject = "New Rental Enquiry From Website";
+// Email subject
+$email_subject = "New Rental Enquiry From Pune Website";
 
 // --------------------
 // CHECK FORM SUBMISSION
 // --------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Collect & sanitize values
+    // Sanitize data
     function clean($data)
     {
         return htmlspecialchars(strip_tags(trim($data)));
@@ -29,23 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $source      = clean($_POST['enquiry_source'] ?? 'Website Form');
 
     // --------------------
-    // SIMPLE VALIDATION
+    // BASIC VALIDATION
     // --------------------
-    if (empty($full_name) || empty($email) || empty($phone) || empty($location) || empty($equipment)) {
-        echo "<h3 style='color:red; text-align:center;'>Please fill all required fields.</h3>";
+    if (empty($full_name) || empty($phone) || empty($location) || empty($equipment)) {
+        echo "<script>alert('Please fill all required fields.'); history.back();</script>";
         exit();
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<h3 style='color:red; text-align:center;'>Invalid Email Address!</h3>";
+    if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Invalid Email Address!'); history.back();</script>";
         exit();
     }
 
     // --------------------
-    // CREATE EMAIL BODY
+    // EMAIL BODY
     // --------------------
     $body = "
-    New Rental Enquiry Received:
+    New Rental Enquiry From Pune Website:
 
     Full Name:   $full_name
     Email:       $email
@@ -54,34 +54,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Equipment:   $equipment
     Message:     $message
 
-    Source/Section: $source
-    Time:           " . date("d-m-Y H:i A") . "
-    IP Address:     " . $_SERVER['REMOTE_ADDR'] . "
+    Source:      $source
+    Time:        " . date("d-m-Y H:i A") . "
+    IP Address:  " . $_SERVER['REMOTE_ADDR'] . "
     ";
 
-    // --------------------
-    // EMAIL HEADERS
-    // --------------------
-    $headers = "From: BoomLift Rentals Website <no-reply@yourdomain.com>\r\n";
+    // HEADERS
+    $headers  = "From: BoomLift Rentals Pune <no-reply@boomliftrentpune.com>\r\n";
     $headers .= "Reply-To: $email\r\n";
 
-    // --------------------
     // SEND EMAIL
-    // --------------------
-    $mail_sent = @mail($receiver_email, $email_subject, $body, $headers);
+    $sent = @mail($receiver_email, $email_subject, $body, $headers);
 
-    if ($mail_sent) {
-        echo "<h3 style='color:green; text-align:center;'>Thank you! Your enquiry has been sent successfully – We will contact you soon.</h3>";
-
-        // OPTIONAL: redirect back after 3s
-        echo "<script>
-            setTimeout(function(){
-                window.location.href = 'index.html';   // Change if needed
-            }, 3000);
-        </script>";
+    if ($sent) {
+        // SUCCESS → Redirect to thank-you page
+        header("Location: thankyou.html");
+        exit();
     } else {
-        echo "<h3 style='color:red; text-align:center;'>Something went wrong. Try again later.</h3>";
+        echo "<script>alert('Something went wrong. Try again later.'); history.back();</script>";
     }
 } else {
-    echo "<h3 style='color:red; text-align:center;'>Invalid Request</h3>";
+    echo "<script>alert('Invalid Request!'); window.location.href='index.html';</script>";
 }
